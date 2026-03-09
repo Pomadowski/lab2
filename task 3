@@ -1,0 +1,53 @@
+#include <cstdio>
+int runCountMonitor = 0;
+int maxValue(int a, int b);
+int maxValue(int a, int b){
+	runCountMonitor++;
+	if(a >= b){
+		return a;
+	}
+	return b;
+}
+
+int maxValue(int a, int b, int c);
+int maxValue(int a, int b, int c){
+	runCountMonitor++;
+	int d = 0;
+	b = maxValue(b, c);
+	a = maxValue(a, b);
+	return a;
+	
+}
+
+double maxValue(double a, double b);
+double maxValue(double a, double b){
+	runCountMonitor++;
+	if(a >= b){
+		return a;
+	}
+	return b;
+}
+
+
+int main(){
+	int n = 2;
+	int m = 3;
+	int o = 4;
+	double x = 3.14159265359;
+	double y = 1.61803398875;
+	int output1 = 0;
+	int output2 = 0;
+	double output3 = 0;
+	
+	output1 = maxValue(n,m);
+	printf("%d \n", output1);
+	output2 = maxValue(n,m,o);
+	printf("%d \n", output2);
+	output3 = maxValue(x,y);
+	printf("%f \n", output3);
+	printf("runCountMonitor == %d \n", runCountMonitor);
+	return 0;
+	
+	
+	
+}
