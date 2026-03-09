@@ -1,0 +1,71 @@
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+
+int energy = 0;
+
+int fibonacci(int a);
+int fibonacci(int a){
+	int t1=0,t2=1,n,i,nextTerm;
+  
+   for ( i = 1; i <= a; ++i) {
+      nextTerm = t1 + t2 ;
+      t1 = t2 ;
+      t2 = nextTerm ;
+      
+   }
+	return nextTerm;
+}
+
+int move(int a, int b, int c);
+int move(int a, int b, int c){
+	printf("turn left ");
+	energy--;
+	printf("%d \n", energy);
+	return 0;
+}
+int move(int a, int b);
+int move(int a, int b){
+	printf("turn right");
+	energy--;
+	printf("%d \n", energy);
+	return 0;
+}
+int move(int a);
+int move(int a){
+	printf("go forward");
+	energy--;
+	printf("%d \n", energy);
+	return 0;
+}
+
+int main(){
+	int fibInput = 0;
+	int z = 0;
+	std::cin >> fibInput;
+	energy = fibonacci(fibInput);
+	while(true){
+		z = rand() %3 + 1;
+		if(z==1){
+			move(z);
+			if(energy==0){
+				return 0;
+			}
+		}
+		else if(z==2){
+			move(z,z);
+			if(energy==0){
+				return 0;
+			}
+		}
+		else{
+			move(z,z,z);
+			if(energy==0){
+				return 0;
+			}
+		}
+		
+	}
+	return 0;
+}
